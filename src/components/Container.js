@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default props => (
+const Container = props => (
   <div className="container">
     {props.children}
   </div>
 )
+
+export default Container;
