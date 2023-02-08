@@ -1,5 +1,56 @@
+:root {
+  --primary1: #495e57;
+  --primary2: #f4ce14;
+  --secondary1: #ee9972;
+  --secondary2: #fbdabb;
+  --highlight-light: #edefee;
+  --highlight-dark: #333333;
+}
+
+/* from https://chakra-ui.com/docs/styled-system/responsive-styles
+const breakpoints = {
+  sm: '30em',
+  md: '48em',
+  lg: '62em',
+  xl: '80em',
+  '2xl': '96em',
+}
+*/
+
+@media screen {
+  .container {
+    width: 100vw;
+  }
+}
+
+@media screen and (min-width: 62em) {
+  .container {
+    width: 62em;
+    max-width: 62em;
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+}
+
+header, main>section, footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#highlights {
+  background-color: var(--primary1);
+  color: var(--highlight-light);
+}
+
+#testimonies {
+  background-color: var(--secondary2);
+}
+
+footer {
+  background-color: var(--secondary2);
 }
