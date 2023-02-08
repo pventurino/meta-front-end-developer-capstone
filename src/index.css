@@ -30,10 +30,30 @@ const breakpoints = {
   }
 }
 
+@font-face {
+  font-family: 'MarkaziText';
+  src: local('MarkaziText'), url(./fonts/MarkaziText.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Karla';
+  src: local('Karla'), url(./fonts/Karla.ttf) format('truetype');
+}
+
+h1, h2 {
+  font-family: 'MarkaziText', serif;
+}
+
+h1 { font-size: 64pt; }
+h2 { font-size: 40pt; }
+.lead { font-size: 18pt; }
+.card { font-size: 18pt; font-weight: bold; }
+p { font-size: 16pt; line-height: 1.5;  max-width: 65ch; }
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Karla', sans-serif;
 }
 
 header, main>section, footer {

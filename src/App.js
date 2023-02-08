@@ -25,7 +25,8 @@ class App extends Component {
         <main>
           <section id="highlights">
             <Container>
-              <h1>highlights</h1>
+              <h1>Little Lemon</h1>
+              <h2>Chicago</h2>
             </Container>
           </section>
           <section id="specials">
@@ -46,7 +47,7 @@ class App extends Component {
         </main>
         <footer>
           <Container>
-            footer
+            <h1>footer</h1>
           </Container>
         </footer>
       </>
