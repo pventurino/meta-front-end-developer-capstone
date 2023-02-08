@@ -62,6 +62,34 @@ header, main>section, footer {
   align-items: center;
 }
 
+header {
+  .container {
+    display: flex;
+    margin: 1em 0;
+  }
+
+  nav {
+    flex-grow: 1;
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      gap: 1.5em;
+
+      li { list-style: none; }
+    }
+
+    a {
+      color: var(--primary1);
+      font-weight: bold;
+      text-decoration: none;
+
+      &:hover { color: var(--primary2); }
+    }
+  }
+} 
+
 #highlights {
   background-color: var(--primary1);
   color: var(--highlight-light);
