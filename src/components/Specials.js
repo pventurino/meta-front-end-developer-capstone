@@ -43,12 +43,14 @@ const specials = [
 const SpecialCard = props => (
   <div className='card'>
     <img src={props.photo} alt={props.title}/>
-    <div className='content'>
-      <span className='title'>{props.title}</span>
-      <span className='price'>$ {props.price.toFixed(2)}</span>
-      <p>{props.description}</p>
+    <div className='cardBottom'>
+      <div className='content'>
+        <h4 className='title'>{props.title}</h4>
+        <h4 className='price'>$ {props.price.toFixed(2)}</h4>
+        <p>{props.description}</p>
+      </div>
+      <span className='link'>Order delivery <FontAwesomeIcon icon={faMotorcycle} /></span>
     </div>
-    <span className='link'>Order delivery <FontAwesomeIcon icon={faMotorcycle} /></span>
   </div>
 );
 
