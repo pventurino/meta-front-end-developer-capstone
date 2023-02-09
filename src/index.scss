@@ -23,10 +23,28 @@ body {
   font-family: 'Karla', sans-serif;
 }
 
+h1, h2 {
+  font-family: 'MarkaziText', serif;
+  font-weight: normal;
+  margin: 0;
+  line-height: 0.7;
+}
+
+h1 { font-size: 46pt; }
+h2 { font-size: 32pt; }
+h3 { text-transform: uppercase; font-size: 20pt; font-weight: bolder; }
+.lead { font-size: 18pt; }
+p { font-size: 16pt; line-height: 1.5;  max-width: 65ch; }
+
 @media screen {
   .container {
     width: 95vw;
   }
+}
+
+@media screen and (min-width: 48em) {
+  h1 { font-size: 64pt; }
+  h2 { font-size: 40pt; }
 }
 
 @media screen and (min-width: 62em) {
@@ -44,19 +62,6 @@ body {
   font-family: 'Karla';
   src: local('Karla'), url(./fonts/Karla.ttf) format('truetype');
 }
-
-h1, h2 {
-  font-family: 'MarkaziText', serif;
-  font-weight: normal;
-  margin: 0;
-  line-height: 0.7;
-}
-
-h1 { font-size: 64pt; }
-h2 { font-size: 40pt; }
-h3 { text-transform: uppercase; font-size: 20pt; font-weight: bolder; }
-.lead { font-size: 18pt; }
-p { font-size: 16pt; line-height: 1.5;  max-width: 65ch; }
 
 header, main>section, footer {
   display: flex;
