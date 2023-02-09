@@ -2,6 +2,7 @@ import React from 'react';
 import Container from "./Container";
 
 import logo from '../logo.svg';
+import './Header.scss';
 
 const Header = props => (
   <Container>

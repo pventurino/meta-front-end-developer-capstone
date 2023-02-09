@@ -42,12 +42,15 @@ const breakpoints = {
 
 h1, h2 {
   font-family: 'MarkaziText', serif;
+  font-weight: normal;
+  margin: 0;
+  line-height: 0.7;
 }
 
 h1 { font-size: 64pt; }
 h2 { font-size: 40pt; }
+h3 { text-transform: uppercase; font-size: 20pt; font-weight: bolder; }
 .lead { font-size: 18pt; }
-.card { font-size: 18pt; font-weight: bold; }
 p { font-size: 16pt; line-height: 1.5;  max-width: 65ch; }
 
 body {
@@ -60,67 +63,6 @@ header, main>section, footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-header {
-  @media screen {
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      
-      nav {
-        flex-grow: 1;
-        ul {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          margin: 0;
-          padding: 0;
-        }
-        li {
-          padding: .5em;
-        }
-      }
-    }
-  }
-  
-  @media screen and (min-width: 62em) {
-    .container {
-      flex-direction: row;
-      margin: 1em 0;
-
-      img {
-        margin: .5em;
-      }
-
-      nav {
-        ul {
-          flex-direction: row;
-          justify-content: flex-end;
-          gap: 1.5em;
-        }
-      }
-    }
-  }
-
-  nav {
-    ul li {
-      list-style: none;
-    }
-
-    a {
-      color: var(--primary1);
-      font-weight: bold;
-      text-decoration: none;
-    }
-    a:hover { color: var(--primary2); }
-  }
-} 
-
-#highlights {
-  background-color: var(--primary1);
-  color: var(--highlight-light);
 }
 
 #testimonies {
