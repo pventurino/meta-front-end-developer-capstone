@@ -8,6 +8,7 @@ import lemon_dessert from '../img/lemon dessert.jpg';
 import './Specials.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMotorcycle } from '@fortawesome/free-solid-svg-icons'
+import Button from './Button';
 
 const specials = [
   {
@@ -58,6 +59,7 @@ const Specials = props => {
   return (
     <Container>
       <h2>This week's specials!</h2>
+      <Button value='Online Menu'/>
       <div className='cards'>
         {cards}
       </div>
