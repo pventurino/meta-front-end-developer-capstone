@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import Container from './components/Container';
+import About from './components/About';
+import Footer from './components/Footer';
 import Header from './components/Header';
+import Highlights from './components/Highlighs';
+import Specials from './components/Specials';
+import Testimonies from './components/Testimonies';
 
 class App extends Component {
   render() {
@@ -12,31 +16,20 @@ class App extends Component {
         </header>
         <main>
           <section id="highlights">
-            <Container>
-              <h1>Little Lemon</h1>
-              <h2>Chicago</h2>
-            </Container>
+            <Highlights/>
           </section>
           <section id="specials">
-            <Container>
-              <h1>specials</h1>
-            </Container>
+            <Specials/>
           </section>
           <section id="testimonies">
-            <Container>
-              <h1>testimonies</h1>
-            </Container>
+            <Testimonies/>
           </section>
           <section id="about">
-            <Container>
-              <h1>about</h1>
-            </Container>
+            <About/>
           </section>
         </main>
         <footer>
-          <Container>
-            <h1>footer</h1>
-          </Container>
+          <Footer/>
         </footer>
       </>
     );

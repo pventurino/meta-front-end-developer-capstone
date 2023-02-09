@@ -1,0 +1,35 @@
+#highlights {
+  background-color: var(--primary1);
+  color: var(--highlight-light);
+  margin-bottom: 8ch;
+
+  .container {
+    display: flex;
+  }
+
+  .half {
+    flex-grow: 1;
+    margin: 1em auto;
+  }
+
+  .right {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  h1 {
+    color: var(--primary2);
+  }
+  p {
+    line-height: 1;
+    max-width: 23ch;
+  }
+
+  img {
+    width: 35ch;
+    height: 35ch;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: -40ch;
+  }
+}
