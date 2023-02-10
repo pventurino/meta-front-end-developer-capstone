@@ -1,0 +1,39 @@
+#about {
+
+  .container {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2em;
+    margin: 2em 0;
+
+    &>div {
+      flex: 1;
+    } 
+
+    .images {
+      display: none;
+      position: relative;
+
+      img {
+        width: 30ch;
+        height: 30ch;
+        position: absolute;
+        object-fit: cover;
+        border-radius: 16px;
+        border: 1px solid var(--highlight-dark);
+      }
+
+      .photo1 { left: 15ch; top: 0ch; z-index: 1; }
+      .photo2 { left: 5ch; top: 15ch; }
+    }
+
+    @media screen and (min-width: 48em) {
+      .images {
+        display: initial;
+      }
+    }
+  
+  }
+}
