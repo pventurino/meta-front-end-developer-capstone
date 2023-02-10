@@ -41,7 +41,7 @@ const specials = [
 ];
 
 const SpecialCard = props => (
-  <div className='card'>
+  <div className='card' key={props.title}>
     <img src={props.photo} alt={props.title}/>
     <div className='cardBottom'>
       <div className='content'>
@@ -56,10 +56,10 @@ const SpecialCard = props => (
 
 const Specials = props => {
 
-  let cards = specials.map(item => (<SpecialCard {...item}/>))
+  let cards = specials.map((item, i) => (<SpecialCard {...item} key={i}/>))
   
   return (
-    <Container>
+    <Container key={"testimonies"}>
       <h2>This week's specials!</h2>
       <Button value='Online Menu'/>
       <div className='cards'>
