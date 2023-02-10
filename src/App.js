@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import About from './components/About';
+import Reservations from './components/Reservations';
 import Footer from './components/Footer';
 import Header from './components/Header';
-import Highlights from './components/Highlighs';
-import Specials from './components/Specials';
-import Testimonies from './components/Testimonies';
+import HomePage from './components/HomePage';
 
 class App extends Component {
   render() {
@@ -15,18 +14,10 @@ class App extends Component {
           <Header/>
         </header>
         <main>
-          <section id="highlights">
-            <Highlights/>
-          </section>
-          <section id="specials">
-            <Specials/>
-          </section>
-          <section id="testimonies">
-            <Testimonies/>
-          </section>
-          <section id="about">
-            <About/>
-          </section>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/reservations" element={<Reservations />} />
+          </Routes>
         </main>
         <footer>
           <Footer/>
