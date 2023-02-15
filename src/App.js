@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Reservations from './components/Reservations';
 import Footer from './components/Footer';
@@ -9,7 +9,7 @@ import HomePage from './components/HomePage';
 class App extends Component {
   render() {
     return (
-      <>
+      <BrowserRouter>
         <header>
           <Header/>
         </header>
@@ -22,7 +22,7 @@ class App extends Component {
         <footer>
           <Footer/>
         </footer>
-      </>
+      </BrowserRouter>
     );
   }
 }
