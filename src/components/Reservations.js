@@ -1,5 +1,6 @@
 import React, { useReducer, useState } from "react";
 import BookingForm from "./BookingForm";
+import Container from "./Container";
 import './Reservations.scss';
 
 const Reservations = () => {
@@ -13,13 +14,15 @@ const Reservations = () => {
   const [availableTimes, updateAvailableTimes] = useReducer(updateTimes, initializeTimes());
 
   return (
-    <>
-      Reservations
-      <BookingForm
-        availableTimes={availableTimes}
-        onDateChange={updateAvailableTimes}
-        />
-    </>
+    <section id='reservations'>
+      <Container>
+        <h2>Reservations</h2>
+        <BookingForm
+          availableTimes={availableTimes}
+          onDateChange={updateAvailableTimes}
+          />
+      </Container>
+    </section>
   );
 }
 

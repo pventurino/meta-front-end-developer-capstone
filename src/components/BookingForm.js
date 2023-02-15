@@ -31,26 +31,34 @@ const BookingForm = ({availableTimes, onDateChange}) => {
     >
       {({errors, touched}) => (
         <Form style={{display:'grid', maxWidth:'200px', gap:'20px'}}>
-          <label htmlFor='res-date'>Choose date</label>
-          <Field name='res-date' type='date' onChange={(e) => onDateChange(e.currentTarget.value)}/>
-          <ErrorMessage name='res-date' />
+          <div className='formField'>
+            <label htmlFor='res-date'>Choose date</label>
+            <Field name='res-date' type='date' onChange={(e) => onDateChange(e.currentTarget.value)}/>
+            <ErrorMessage name='res-date' />
+          </div>
 
-          <label htmlFor='res-time'>Choose time</label>
-          <Field name='res-time' as='select'>
-            { availableTimes.map(x => (<option key={x} value={x}>{x}:00</option>)) }
-          </Field>
-          <ErrorMessage name='res-time' />
+          <div className='formField'>
+            <label htmlFor='res-time'>Choose time</label>
+            <Field name='res-time' as='select'>
+              { availableTimes.map(x => (<option key={x} value={x}>{x}:00</option>)) }
+            </Field>
+            <ErrorMessage name='res-time' />
+          </div>
 
-          <label htmlFor='guests'>Number of guests</label>
-          <Field name='guests' type='number' min={1} max={10}/>
-          <ErrorMessage name='guests'/>
+          <div className='formField'>
+            <label htmlFor='guests'>Number of guests</label>
+            <Field name='guests' type='number' min={1} max={10}/>
+            <ErrorMessage name='guests'/>
+          </div>
 
-          <label htmlFor='occasion'>Occasion</label>
-          <Field name='occasion' as='select'>
-            <option key='birthday' value='Birthday'>Birthday</option>
-            <option key='anniversary' value='Anniversary'>Anniversary</option>
-          </Field>
-          <ErrorMessage name='occasion'/>
+          <div className='formField'>
+            <label htmlFor='occasion'>Occasion</label>
+            <Field name='occasion' as='select'>
+              <option key='birthday' value='Birthday'>Birthday</option>
+              <option key='anniversary' value='Anniversary'>Anniversary</option>
+            </Field>
+            <ErrorMessage name='occasion'/>
+          </div>
 
           <button type='submit'>Make Your reservation</button>
         </Form>
