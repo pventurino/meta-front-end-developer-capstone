@@ -2,11 +2,7 @@ import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 
-const BookingForm = props => {
-
-  let [availableTimes] = useState(
-    [17,18,19,20,21,22]
-  );
+const BookingForm = ({availableTimes, onDateChange}) => {
 
   let utcDate = new Date();
   let offsetInMillis = 60 * 1000 * utcDate.getTimezoneOffset();
@@ -36,7 +32,7 @@ const BookingForm = props => {
       {({errors, touched}) => (
         <Form style={{display:'grid', maxWidth:'200px', gap:'20px'}}>
           <label htmlFor='res-date'>Choose date</label>
-          <Field name='res-date' type='date'/>
+          <Field name='res-date' type='date' onChange={(e) => onDateChange(e.currentTarget.value)}/>
           <ErrorMessage name='res-date' />
 
           <label htmlFor='res-time'>Choose time</label>
