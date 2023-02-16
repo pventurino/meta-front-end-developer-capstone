@@ -7,7 +7,7 @@ const BookingForm = ({availableTimes, onDateChange}) => {
   let utcDate = new Date();
   let offsetInMillis = 60 * 1000 * utcDate.getTimezoneOffset();
   let localDate = new Date(utcDate - offsetInMillis);
-  
+
   let [state, setState] = useState({
     'res-date': localDate.toISOString().substring(0,10),
     'res-time': 17,
@@ -33,13 +33,13 @@ const BookingForm = ({availableTimes, onDateChange}) => {
         <Form style={{display:'grid', maxWidth:'200px', gap:'20px'}}>
           <div className='formField'>
             <label htmlFor='res-date'>Choose date</label>
-            <Field name='res-date' type='date' onChange={(e) => onDateChange(e.currentTarget.value)}/>
+            <Field id='res-date' name='res-date' type='date' onChange={(e) => onDateChange(e.currentTarget.value)}/>
             <ErrorMessage name='res-date' />
           </div>
 
           <div className='formField'>
             <label htmlFor='res-time'>Choose time</label>
-            <Field name='res-time' as='select'>
+            <Field id='res-time' name='res-time' as='select'>
               { availableTimes.map(x => (<option key={x} value={x}>{x}:00</option>)) }
             </Field>
             <ErrorMessage name='res-time' />
@@ -47,13 +47,13 @@ const BookingForm = ({availableTimes, onDateChange}) => {
 
           <div className='formField'>
             <label htmlFor='guests'>Number of guests</label>
-            <Field name='guests' type='number' min={1} max={10}/>
+            <Field id='guests' name='guests' type='number' min={1} max={10}/>
             <ErrorMessage name='guests'/>
           </div>
 
           <div className='formField'>
             <label htmlFor='occasion'>Occasion</label>
-            <Field name='occasion' as='select'>
+            <Field id='occasion' name='occasion' as='select'>
               <option key='birthday' value='Birthday'>Birthday</option>
               <option key='anniversary' value='Anniversary'>Anniversary</option>
             </Field>

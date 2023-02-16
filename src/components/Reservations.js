@@ -3,14 +3,15 @@ import BookingForm from "./BookingForm";
 import Container from "./Container";
 import './Reservations.scss';
 
+const initializeTimes = () => ([17,18,19,20,21,22]);
+
+const updateTimes = (state, forDate) => {
+  console.log('forDate', forDate);
+  return state;
+}
+
 const Reservations = () => {
 
-  const updateTimes = (state, forDate) => {
-    console.log('forDate', forDate);
-    return state;
-  }
-
-  const initializeTimes = () => ([17,18,19,20,21,22]);
   const [availableTimes, updateAvailableTimes] = useReducer(updateTimes, initializeTimes());
 
   return (
