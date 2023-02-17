@@ -1,18 +1,20 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer } from "react";
 import BookingForm from "./BookingForm";
 import Container from "./Container";
+import { fetchAPI } from "../api";
 import './Reservations.scss';
 
-export const initializeTimes = () => ([17,18,19,20,21,22]);
+export const initializeTimes = () => fetchAPI(new Date());
 
 export const updateTimes = (state, forDate) => {
-  console.log('forDate', forDate);
-  return state;
+  return fetchAPI(forDate);
 }
 
-const Reservations = () => {
+const Reservations = ({onSubmit}) => {
 
   const [availableTimes, updateAvailableTimes] = useReducer(updateTimes, initializeTimes());
+
+  const handleSubmit = (onSubmit) ?? ((values) => { console.log('submit', values); })
 
   return (
     <section id='reservations'>
@@ -21,6 +23,7 @@ const Reservations = () => {
         <BookingForm
           availableTimes={availableTimes}
           onDateChange={updateAvailableTimes}
+          onSubmit={handleSubmit}
           />
       </Container>
     </section>

@@ -2,19 +2,17 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-const BookingForm = ({availableTimes, onDateChange}) => {
+const BookingForm = ({availableTimes, onDateChange, onSubmit}) => {
 
   let utcDate = new Date();
   let offsetInMillis = 60 * 1000 * utcDate.getTimezoneOffset();
   let localDate = new Date(utcDate - offsetInMillis);
 
-  const doSubmit = (...args) => console.log(...args);
-
   const formik = useFormik({
-    onSubmit: values => doSubmit(values),
+    onSubmit: onSubmit,
     initialValues: {
       'res-date': localDate.toISOString().substring(0,10),
-      'res-time': 17,
+      'res-time': availableTimes[0],
       'guests': 2,
       'occasion': 'Birthday'
     },
@@ -28,7 +26,8 @@ const BookingForm = ({availableTimes, onDateChange}) => {
 
   const ErrorMessage = (props) => !!formik.errors[props.name] ? (
     <label
-      className='errorLabel'
+      className='error'
+      role='alert'
       style={{color: 'red'}}
       htmlFor={props.name}>
       {formik.errors[props.name]}
@@ -97,7 +96,7 @@ const BookingForm = ({availableTimes, onDateChange}) => {
         <ErrorMessage name='occasion'/>
       </div>
 
-      <button type='submit' role='submit'>Make Your reservation</button>
+      <button type='submit'>Make Your reservation</button>
     </form>
 )
 };
