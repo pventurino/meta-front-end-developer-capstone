@@ -1,4 +1,4 @@
-import { render, screen, within,  } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import BookingForm from './BookingForm';
 import Reservations, { initializeTimes, updateTimes } from "./Reservations";
 
@@ -32,3 +32,9 @@ test('updateTimes', () => {
     const outputState = updateTimes(inputState, '2022-02-02');
     expect(outputState).toEqual(inputState);
 })
+
+test('Form component can be submitted', () => {
+    render(<Reservations/>);
+    const submitButton = screen.getByText(/Make Your reservation/i);
+    fireEvent.click(submitButton);
+});
