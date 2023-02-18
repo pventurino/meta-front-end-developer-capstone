@@ -7,7 +7,7 @@ import './Reservations.scss';
 export const initializeTimes = () => fetchAPI(new Date());
 
 export const updateTimes = (state, forDate) => {
-  return fetchAPI(forDate);
+  return fetchAPI(new Date(forDate));
 }
 
 const Reservations = ({onSubmit}) => {

@@ -46,6 +46,18 @@ describe('Reservations', () => {
         expect(mockSubmit).toBeCalled();
     });
 
+    it('auto-selects an existing time', () => {
+        const fetchAPI = jest.spyOn(API, 'fetchAPI')
+            .mockReturnValueOnce(['17:00','18:00'])
+            .mockReturnValueOnce(['18:00','19:00']);
+
+        render(<Reservations />)
+        const datePicker = screen.getByLabelText('Choose date');
+        const timePicker = screen.getByLabelText('Choose time');
+
+        expect(within(timePicker).getByRole('option', {name: '17:00'}).selected).toBe(true);
+    });
+
     test('initializeTimes', () => {
         const mockReturn = ['17:00','17:30','19:00'];
         const mockFetch = jest.spyOn(API, 'fetchAPI')

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -24,6 +24,13 @@ const BookingForm = ({availableTimes, onDateChange, onSubmit}) => {
     }),
   });
 
+  useEffect(() => {
+    let selectedTime = formik.values['res-time'];
+    if ( availableTimes.indexOf(selectedTime) == -1 ) {
+      formik.setValues({...formik.values, 'res-time': availableTimes[0]});
+    }
+  }, [availableTimes]);
+
   const ErrorMessage = (props) => !!formik.errors[props.name] ? (
     <label
       className='error'
@@ -46,7 +53,10 @@ const BookingForm = ({availableTimes, onDateChange, onSubmit}) => {
           type='date'
           value={formik.values['res-date']}
           onBlur={formik.onBlur}
-          onChange={formik.handleChange}
+          onChange={(e) => {
+            onDateChange(e.currentTarget.value);
+            formik.handleChange(e);
+          }}
           />
         <ErrorMessage name='res-date' />
       </div>
