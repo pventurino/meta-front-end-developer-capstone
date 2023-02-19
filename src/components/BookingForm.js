@@ -4,20 +4,21 @@ import * as Yup from 'yup';
 
 const BookingForm = ({availableTimes, onDateChange, onSubmit}) => {
 
-  let utcDate = new Date();
-  let offsetInMillis = 60 * 1000 * utcDate.getTimezoneOffset();
-  let localDate = new Date(utcDate - offsetInMillis);
+  const utcDate = new Date();
+  const offsetInMillis = 60 * 1000 * utcDate.getTimezoneOffset();
+  const localDate = new Date(utcDate - offsetInMillis);
+  const today = localDate.toISOString().substring(0,10);
 
   const formik = useFormik({
     onSubmit: onSubmit,
     initialValues: {
-      'res-date': localDate.toISOString().substring(0,10),
+      'res-date': today,
       'res-time': availableTimes[0],
       'guests': 2,
       'occasion': 'Birthday'
     },
     validationSchema: Yup.object({
-      'res-date': Yup.date().required(),
+      'res-date': Yup.date().required().min(today),
       'res-time': Yup.string().oneOf(availableTimes).required(),
       'guests': Yup.number().positive().min(1).max(10).required(),
       'occasion': Yup.string().oneOf(['Birthday','Anniversary'])
@@ -26,10 +27,10 @@ const BookingForm = ({availableTimes, onDateChange, onSubmit}) => {
 
   useEffect(() => {
     let selectedTime = formik.values['res-time'];
-    if ( availableTimes.indexOf(selectedTime) == -1 ) {
+    if ( availableTimes.indexOf(selectedTime) === -1 ) {
       formik.setValues({...formik.values, 'res-time': availableTimes[0]});
     }
-  }, [availableTimes]);
+  }, [formik, availableTimes]);
 
   const ErrorMessage = (props) => !!formik.errors[props.name] ? (
     <label
@@ -51,6 +52,7 @@ const BookingForm = ({availableTimes, onDateChange, onSubmit}) => {
           id='res-date'
           name='res-date'
           type='date'
+          min={today}
           value={formik.values['res-date']}
           onBlur={formik.onBlur}
           onChange={(e) => {
