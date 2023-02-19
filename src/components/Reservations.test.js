@@ -4,6 +4,12 @@ import Reservations, { initializeTimes, updateTimes } from "./Reservations";
 import * as API from "../api";
 import userEvent from "@testing-library/user-event";
 
+const mockNavigate = jest.fn();
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
+    useNavigate: () => mockNavigate
+}));
+
 describe('Reservations', () => {
 
     afterEach(() => {
@@ -33,7 +39,6 @@ describe('Reservations', () => {
     test('Form component can be submitted', async () => {
         const fetchAPI = jest.spyOn(API, 'fetchAPI');
         const submitAPI = jest.spyOn(API, 'submitAPI');
-        
         render(<Reservations />);
         expect(fetchAPI).toBeCalled();
     
@@ -43,6 +48,7 @@ describe('Reservations', () => {
         const submitButton = screen.getByRole('button', {type: 'submit'});
         await userEvent.click(submitButton);
         expect(submitAPI).toBeCalled();
+        expect(mockNavigate).toHaveBeenCalledWith('/reservations/confirmation');
     });
 
     it('auto-selects an existing time', async () => {

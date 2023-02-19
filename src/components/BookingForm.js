@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import useSubmitReservation from '../hooks/useSubmitReservation';
 
-const BookingForm = ({availableTimes, onDateChange}) => {
-  const {isLoading, response, submit} = useSubmitReservation();
+const BookingForm = ({availableTimes, onDateChange, onSubmit}) => {
 
   let utcDate = new Date();
   let offsetInMillis = 60 * 1000 * utcDate.getTimezoneOffset();
   let localDate = new Date(utcDate - offsetInMillis);
 
   const formik = useFormik({
-    onSubmit: (values) => submit(values),
+    onSubmit: onSubmit,
     initialValues: {
       'res-date': localDate.toISOString().substring(0,10),
       'res-time': availableTimes[0],
