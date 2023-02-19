@@ -23,7 +23,6 @@ const Reservations = ({onSubmit}) => {
         <BookingForm
           availableTimes={availableTimes}
           onDateChange={updateAvailableTimes}
-          onSubmit={handleSubmit}
           />
       </Container>
     </section>

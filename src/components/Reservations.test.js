@@ -32,9 +32,9 @@ describe('Reservations', () => {
     
     test('Form component can be submitted', async () => {
         const fetchAPI = jest.spyOn(API, 'fetchAPI');
-        const mockSubmit = jest.fn();
+        const submitAPI = jest.spyOn(API, 'submitAPI');
         
-        render(<Reservations onSubmit={mockSubmit}/>);
+        render(<Reservations />);
         expect(fetchAPI).toBeCalled();
     
         const select = screen.getByLabelText(/choose time/i);
@@ -42,7 +42,7 @@ describe('Reservations', () => {
     
         const submitButton = screen.getByRole('button', {type: 'submit'});
         await userEvent.click(submitButton);
-        expect(mockSubmit).toBeCalled();
+        expect(submitAPI).toBeCalled();
     });
 
     it('auto-selects an existing time', async () => {
