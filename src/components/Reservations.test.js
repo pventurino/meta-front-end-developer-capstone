@@ -1,4 +1,4 @@
-import { render, screen, within, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, within, fireEvent, act } from "@testing-library/react";
 import BookingForm from './BookingForm';
 import Reservations, { initializeTimes, updateTimes } from "./Reservations";
 import * as API from "../api";
@@ -39,23 +39,25 @@ describe('Reservations', () => {
     
         const select = screen.getByLabelText(/choose time/i);
         const options = within(select).getAllByText(/\d+:[03]0/);
-        console.log('options', options.map(elem => elem.textContent));
     
         const submitButton = screen.getByRole('button', {type: 'submit'});
         await userEvent.click(submitButton);
         expect(mockSubmit).toBeCalled();
     });
 
-    it('auto-selects an existing time', () => {
-        const fetchAPI = jest.spyOn(API, 'fetchAPI')
-            .mockReturnValueOnce(['17:00','18:00'])
-            .mockReturnValueOnce(['18:00','19:00']);
+    it('auto-selects an existing time', async () => {
+        const fetchAPI = jest.spyOn(API, 'fetchAPI');
+        fetchAPI.mockReturnValue(['17:00','18:00']);
 
         render(<Reservations />)
-        const datePicker = screen.getByLabelText('Choose date');
         const timePicker = screen.getByLabelText('Choose time');
+        expect(timePicker.value).toEqual('17:00');
 
-        expect(within(timePicker).getByRole('option', {name: '17:00'}).selected).toBe(true);
+        fetchAPI.mockReturnValue(['18:00','19:00']);
+        const datePicker = screen.getByLabelText('Choose date');
+        await act(() => fireEvent.change(datePicker, {target: {value: '2022-02-02'}}));
+        expect(timePicker.value).toEqual('18:00');
+
     });
 
     test('initializeTimes', () => {

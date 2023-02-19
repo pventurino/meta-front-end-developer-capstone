@@ -5,6 +5,7 @@ import Reservations from './components/Reservations';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import HomePage from './components/HomePage';
+import ConfirmationPage from './components/ConfirmationPage';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/reservations" element={<Reservations />} />
+            <Route path="/reservations/confirmation" element={<ConfirmationPage/>} />
           </Routes>
         </main>
         <footer>
