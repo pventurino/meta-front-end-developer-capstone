@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import BookingForm from "./BookingForm";
 
@@ -19,13 +19,17 @@ describe('Booking form validations', () => {
   it('validates date field', async () => {
     renderForm();
     const dateInput = screen.getByLabelText('Choose date');
+
+    const getAlert = async () => 
+      await screen.findByRole('alert', {htmlFor: dateInput.id});
   
     // Date is required
     await userEvent.clear(dateInput);
-    await screen.findByRole('alert', {htmlFor: dateInput.id})
-      .then(elem => {
-        expect(elem.textContent).toMatch(/is a required field/);
-      });
+    expect(await getAlert()).toHaveTextContent(/is a required field/);
+
+    // Date not in the past
+    await userEvent.type(dateInput, '1990-01-01', {delay: 10});
+    expect(await getAlert()).toHaveTextContent(/must be later/);
   });
 
   it('validates time field', async () => {
